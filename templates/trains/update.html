@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Редактирование поезда
+{% endblock %}
+
+{% block content %}
+    <h1>Редактирование поезда</h1>
+
+   <div class="row">
+        <div class="col-md-4">
+            <form action="{{ action }}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <button type="submit" class="btn btn-primary">Редактировать</button>
+            </form>
+        </div>
+    </div>}
+
+{% endblock %}

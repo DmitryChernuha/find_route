@@ -1,4 +1,5 @@
 {% url 'cities:home' as cities_home_urls %}
+{% url 'trains:train' as train_home_urls %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -21,11 +22,11 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link {% if request.path == cities_home_urls %}active {% endif %}" aria-current="page"
+                    <a class="nav-link {% if request.path == cities_home_urls %} active {% endif %}" aria-current="page"
                        href="{% url 'cities:home' %}">Города</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'cities:add' %}">Добавить город</a>
+                    <a class="nav-link {% if request.path == train_home_urls %} active {% endif %}" href="{% url 'trains:train' %}">Поезда</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
@@ -45,9 +46,9 @@
         </div>
     </div>
 </nav>
-<div class="container">
+
     <div class="row">
-        <div class="col-md-8 mx-auto my-4">
+        <div class="container mx-auto my-4">
             {% if messages %}
                 {% for message in messages %}
                     {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
@@ -69,7 +70,7 @@
             {% endif %}
         </div>
     </div>
-</div>
+
 <div class="container">
     {% block content %}{% endblock %}
 </div>

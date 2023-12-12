@@ -1,27 +1,47 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Список городов
+    Список поездов
 {% endblock %}
 
 {% block content %}
-    <h1 class="text-center">Список городов</h1>
+    <h1 class="text-center">Список поездов</h1>
     <div class="row">
-        <div class="col-md-6 mx-auto my-2">
+        <div class="col-md-12 mx-auto my-2">
             <table class="table table-striped">
-                {% for object in page_obj %}
+                <tr>
+                <th>Номер поезда</th>
+                <th>Отправление</th>
+                <th>Прибытие</th>
+                <th>Время в пути</th>
+                <th>&nbsp</th>
+                <th>&nbsp</th>
+
+                </tr>
+                {% for object in object_list %}
                     <tr>
                         <td>
                             <a style="text-decoration: none"
-                               href="{% url 'cities:detail' pk=object.pk %}">{{ object.name }}</a>
+                               href="{% url 'trains:detail' pk=object.pk %}">Поезд № {{ object.name }}</a>
+                        </td>
+
+                        <td>
+                            <span>{{ object.from_city }}</span>
+
                         </td>
                         <td>
-                            <a style="text-decoration: none" href="{% url 'cities:update' pk=object.pk %}">
+                            <span>{{ object.to_city }}</span>
+                        </td>
+                        <td>
+                            <span>{{ object.travel_time }} часов</span>
+                        </td>
+                        <td>
+                            <a style="text-decoration: none" href="{% url 'trains:update' pk=object.pk %}">
                                 <button type="submit" class="btn btn-primary">Редактировать</button>
                             </a>
                         </td>
                         <td>
-                            <a style="text-decoration: none" href="{% url 'cities:delete' pk=object.pk %}">
+                            <a style="text-decoration: none" href="#">
                                 <button type="submit" class="btn btn-danger">Удалить</button>
                             </a>
                         </td>
@@ -57,8 +77,8 @@
             </li>
         </ul>
     </nav>
-    <a style="text-decoration: none" href="{% url 'cities:add'%}">
-        <button type="submit" class="btn btn-primary">Добавить город</button>
+    <a style="text-decoration: none" href="{% url 'trains:add_train' %}">
+        <button type="submit" class="btn btn-primary">Добавить поезд</button>
     </a>
 
 

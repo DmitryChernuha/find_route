@@ -9,19 +9,19 @@ from cities.forms import CityForm
 from cities.models import City
 
 
-def home(request, pk=None):
-    if request.method == 'POST':
-        form = CityForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            form.save()
-    qs = City.objects.all()
-    form = CityForm()
-    lst = Paginator(qs, 2)
-    page_number = request.GET.get('page')
-    page_obj = lst.get_page(page_number)
-    context = {'page_obj': page_obj, 'form': form}
-    return render(request, 'cities/home.html', context)
+# def home(request, pk=None):
+#     if request.method == 'POST':
+#         form = CityForm(request.POST)
+#         if form.is_valid():
+#             print(form.cleaned_data)
+#             form.save()
+#     qs = City.objects.all()
+#     form = CityForm()
+#     lst = Paginator(qs, 2)
+#     page_number = request.GET.get('page')
+#     page_obj = lst.get_page(page_number)
+#     context = {'page_obj': page_obj, 'form': form}
+#     return render(request, 'cities/home.html', context)
 
 
 class CityDetailView(DetailView):
