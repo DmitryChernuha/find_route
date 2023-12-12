@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # Local
     'cities.apps.CitiesConfig',
     'trains.apps.TrainsConfig',
+    'accounts.AccountsConfig',
 ]
 
 MIDDLEWARE = [

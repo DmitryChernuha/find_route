@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from cities.models import City
 
 
@@ -17,3 +19,6 @@ class Train(models.Model):
         verbose_name = 'Поезд'
         verbose_name_plural = 'Поезда'
         ordering = ['travel_time']
+
+    def get_absolute_url(self):
+        return reverse('trains:detail', kwargs={'pk': self.pk})
